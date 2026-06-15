@@ -1,4 +1,4 @@
-````
+
 # ATM System Simulator 🏧 (Programming Advices - Course 08)
 
 An advanced, console-based Automated Teller Machine (ATM) simulator implemented in modern C++. This project serves as a standalone client self-service interface that interacts with a shared banking ledger (`Clients.txt`), built as part of the **Programming Advices** roadmap mentored by Eng. Mohammed Abu-Hadhoud.
@@ -17,7 +17,7 @@ All transactional data scales across a flat-file database, ensuring data integri
 
 The project layout follows a standard header-only library architecture combined with standard compiler outputs (Visual Studio & GCC compatible):
 
-```text
+``` text
 .
 ├── Course 08 Project 2 ATM System.cpp      # Main Application Entry Point
 ├── Course 08 Project 2 ATM System.sln      # Visual Studio Solution File
@@ -33,7 +33,9 @@ The project layout follows a standard header-only library architecture combined 
 ├── MyUtilityLib.h                          # Generic Helper Functions
 ├── MyMathLib.h                             # Algorithmic Math Implementations
 └── .gitignore                              # Git exclusion rules (build artifacts)
-````
+```
+
+---
 
 ## 🚀 Key Features
 
