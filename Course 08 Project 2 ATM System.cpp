@@ -17,7 +17,7 @@ void ShowDate(bool FullDate = true)
 	{
 		MyDateLib::stDate MDate = MyDateLib::GetSystemDate();
 		cout << MyDateLib::PrintDate(MDate, 1);
-		MyHijriDateLib::stHijriDate HDate = MyHijriDateLib::ConvertMiladiToHijri(MDate.Day, MDate.Month, MDate.Year);
+		MyHijriDateLib::stHijriDate HDate = MyHijriDateLib::ConvertMiladiToHijriTrastedUsingMiladiDay(MDate.Day, MDate.Month, MDate.Year);
 		cout << "\t | " << MyHijriDateLib::PrintHijriDate(HDate);
 	}
 	else

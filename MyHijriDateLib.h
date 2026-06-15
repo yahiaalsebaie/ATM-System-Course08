@@ -2,10 +2,12 @@
 #pragma warning(disable : 4996)
 #include "MyInputLib.h"
 #include "MyStringLib.h"
+#include "MyDateLib.h"
 #include <iostream>
 #include <istream>
 #include <string>
 #include <vector>
+
 
 // بسم الله الرحمن الرحيم .. دالة حساب التاريخ الهجري
 // أغلب المعادلات هنا هي معادلات ثابتة متاخدة زي ما هي زي معادلة التاريخ الغريغوري المستخدمة في مكتبة التاريخ الميلادي
@@ -15,9 +17,18 @@
 
 namespace MyHijriDateLib {
 
-	const string DayLongName[7] = { "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday" };
-
+	/*const string DayLongName[7] = { "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday" };
 	const string DayShortName[7] = { "Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu" };
+
+	// علقتهم عشان جتلي فكرة في تحسين الكود وهي كالتالي :
+	*تثبيت اسم اليوم وهو الثابت الوحيد في التاريخين الهجري والميلادي 
+	* لو وجدنا اليوم هو الأحد وعند التحويل طلع السبت 17 فاحنا نشوف أقصر طريق وهنا هيكون التقدم للأحد 18 بإضافة يوم نزود يوم على التاريخ
+	*ولو كان اليوم الميلادي الجمعة وعند التحويل وجدناه الجمعة هجري فهو صحيح
+	*لو كان اليوم الميلادي الجمعة وعند التحويل وجدناه السبت 21 هنرجعه للجمعة 20 هجري 
+	*/
+	// توحيد الترتيب مع الترتيب الميلادي 
+	const string DayLongName[7] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+	const string DayShortName[7] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
 
 	const short LeapHijriYears[] = { 2, 5, 7, 10, 13, 16, 18, 21, 24, 26, 29 };
 
@@ -45,7 +56,7 @@ namespace MyHijriDateLib {
 		جوة الـ 30 سنة هجرية دول يوجد 11 سنة كريمة
 		بيزيد فيهم يوم في شهر ذو الحجة فيبقى 30 يوم بدل 29
 		وتصبح السنة 355 يوم بدل 354
-		والسنة الكريمة تسمى كريمة عشان لو ضربنا 32 في 11 يوم الفرق، هيدينا سنة كاملة،
+		والسنة الكريمة تسمى كريمة عشان لو ضربنا 32 في 11 يوم الفرق هيدينا سنة كاملة
 		يبقى كل 32 سنة ييجي رمضان مرتين في السنة.
 	*/
 	// بنجيب باقي القسمة على 30 عشان نعرف ترتيب السنة جوة الدورة
@@ -121,11 +132,19 @@ namespace MyHijriDateLib {
 	{
 		return GetAbsoluteHijriDays(Date.Day, Date.Month, Date.Year);
 	}
+	//short GetDayOfWeekIndexOrder(short Day, short Month, short Year, bool ReturnDayShortName = false)
+	//{
+	//	// نجيب الرقم المطلق للأيام
+	//	long AbsoluteDays = GetAbsoluteHijriDays(Day, Month, Year);
+	//	return (AbsoluteDays - 1) % 7; // هنا ده صح لو كنا بنبدأ من يوم الجمعة كمدخل 0 
+	//}
 	short GetDayOfWeekIndexOrder(short Day, short Month, short Year, bool ReturnDayShortName = false)
 	{
-		// نجيب الرقم المطلق للأيام
 		long AbsoluteDays = GetAbsoluteHijriDays(Day, Month, Year);
-		return (AbsoluteDays - 1) % 7;
+
+		// الإزاحة 5 أيام: يوم 1 محرم عام 1 هـ كان يوم جمعة. 
+		// في المصفوفة الجديدة، الجمعة ترتيبه 5. إذن نضبط المعادلة بإضافة 5 أيام
+		return (AbsoluteDays + 5 - 1) % 7;
 	}
 	short GetDayOfWeekIndexOrder(stHijriDate Date, bool ReturnDayShortName = false)
 	{
@@ -292,10 +311,13 @@ namespace MyHijriDateLib {
 
 		if (includedDayName)
 		{
-			short DayOfWeekIndex = (AbsoluteHijriDays - 1) % 7;
+			//short DayOfWeekIndex = (AbsoluteHijriDays - 1) % 7; // صح في المعادلة القديمة اللي بتبدأ من يوم الجمعة
+			 
+			
 			//	long TotalMiladiAbsolute = AbsoluteHijriDays + 227001;
 				//short DayOfWeekIndex = (TotalMiladiAbsolute - 1) % 7;
 
+			short DayOfWeekIndex = (AbsoluteHijriDays - 1) % 7; // الأصح بعد ما غيرت المصفوفة لتناسب التاريخ الميلادي
 			string DayName = (shortName) ? DayShortName[DayOfWeekIndex] : DayLongName[DayOfWeekIndex];
 			return DayName + " : " + to_string(Day) + "/" + to_string(Month) + "/" + to_string(Year);
 		}
@@ -1055,5 +1077,33 @@ namespace MyHijriDateLib {
 	}
 		*/
 	}
+	stHijriDate ConvertMiladiToHijriTrastedUsingMiladiDay(short MiladiDay, short MiladiMonth, short MiladiYear)
+	{
+		//  حساب رقم يوم الأسبوع الميلادي الفعلي Target Weekday
+		/*long AbsoluteMiladiDays = GetAbsoluteMiladiDays(MiladiDay, MiladiMonth, MiladiYear);
+		short TargetWeekday = (AbsoluteMiladiDays - 1 + 5) % 7;*/
+		short TargetWeekday = MyDateLib::GetDayOfWeekOrder(MiladiDay, MiladiMonth, MiladiYear); // مكنتش عايز أناديها بس هي اللي بتجيب اليوم الأصح
 
+		// التاريخ التقريبي
+		stHijriDate ApproxHijriDate = ConvertMiladiToHijri(MiladiDay, MiladiMonth, MiladiYear);
+
+		// حساب رقم يوم الأسبوع الناتج من الحساب التقريبي 
+		short CalculatedWeekday = GetDayOfWeekIndexOrder(ApproxHijriDate.Day, ApproxHijriDate.Month, ApproxHijriDate.Year);
+
+		// هنا بنطبق طريقة حساب الفارق أو الإزاحة
+		short AutoOffset = TargetWeekday - CalculatedWeekday;
+
+		// معالجة الالتفاف الأسبوعي لأقصر طريق
+		if (AutoOffset > 3)  AutoOffset -= 7;
+		if (AutoOffset < -3) AutoOffset += 7;
+
+		// لو كانت الإزاحة صفر تعيد التاريخ التقريبي كما هو فوراً 
+		if (AutoOffset == 0) return ApproxHijriDate;
+
+		//  لو كان هناك فارق بنحصل على الأيام الهجرية المطلقة ونضيف عليها الفارق
+		long CorrectAbsoluteHijriDays = GetAbsoluteHijriDays(ApproxHijriDate) + AutoOffset;
+
+		// والنتيجة النهائية لما بنحول الأيام لتاريخ مظبوط بناءً على اليوم نفسه لتجنب فرق اليوم أو اليومين في التاريخ
+		return GetHijriDateFromAbsoluteDays(CorrectAbsoluteHijriDays);
+	}
 }
