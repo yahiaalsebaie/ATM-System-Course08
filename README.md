@@ -3,6 +3,8 @@
 
 An advanced, console-based Automated Teller Machine (ATM) simulator implemented in modern C++. This project serves as a standalone client self-service interface that interacts with a shared banking ledger (`Clients.txt`), built as part of the **Programming Advices** roadmap mentored by Eng. Mohammed Abu-Hadhoud.
 
+This repository is designed as an extension and operates in direct synchronization with the core [yahiaalsebaie/Bank-Management-System-Cpp](https://github.com/yahiaalsebaie/Bank-Management-System-Cpp) repository: *A multi-phase Bank Management System in C++ featuring multi-user authentication, granular permissions matrix, transactional ledger, and system audit logs.*
+
 ---
 
 ## 📌 Project Overview
@@ -35,6 +37,12 @@ The project layout follows a standard header-only library architecture combined 
 └── .gitignore                              # Git exclusion rules (build artifacts)
 ```
 
+## 🔒 Simulated Database & Security Compliance
+
+- **Data Isolation**: Files like `Clients.txt` and `Users.txt` function strictly as local mock databases using custom field layout delimiters (`#//#`).
+    
+- No real financial credentials, actual banking numbers, or production-grade Personal Identifiable Information (PII) are processed or stored.
+    
 ---
 
 ## 🚀 Key Features
@@ -59,6 +67,7 @@ This project strictly adheres to professional software engineering practices:
 - **Defensive Programming:** Employs advanced standard input stream validation via `std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n')` wrapped inside safe compilation guards (`#define NOMINMAX`) to counter terminal buffer corruptions in Windows environments.
     
 - **DRY Principle (Don't Repeat Yourself):** Reuses the absolute indexing routines across both calendar libraries for uniform calculation layouts.
+
     
 
 ## 💻 Compilation and Execution
