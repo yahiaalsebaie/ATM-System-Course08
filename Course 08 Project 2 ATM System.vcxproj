@@ -132,6 +132,7 @@
     <ClInclude Include="MyArrayLib.h" />
     <ClInclude Include="MyBankDataLib.h" />
     <ClInclude Include="MyDateLib.h" />
+    <ClInclude Include="MyHijriDateLib.h" />
     <ClInclude Include="MyInputLib.h" />
     <ClInclude Include="MyMathLib.h" />
     <ClInclude Include="MyStringLib.h" />

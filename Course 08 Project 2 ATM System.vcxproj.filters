@@ -49,5 +49,8 @@
     <ClInclude Include="MyVectorLib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MyHijriDateLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

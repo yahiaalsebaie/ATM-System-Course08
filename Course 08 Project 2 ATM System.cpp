@@ -2,6 +2,7 @@
 #include <iostream>
 #include "MyBankDataLib.h"
 #include "MyDateLib.h"
+#include "MyHijriDateLib.h"
 #include <limits>
 #include <string>
 
@@ -10,9 +11,20 @@ namespace bank = MyBankDataLib;
 
 enum enATM { eQuickWithdraw = 1, eNormalWithdraw = 2, eDeposit = 3, eCheckBalance = 4, eChangePassword = 5, eLogout = 6 };
 
- void ShowDate()
+void ShowDate(bool FullDate = true)
  {
-	 cout << MyDateLib::PrintDate(MyDateLib::GetSystemDate(), 1);
+	if(FullDate)
+	{
+		MyDateLib::stDate MDate = MyDateLib::GetSystemDate();
+		cout << MyDateLib::PrintDate(MDate, 1);
+		MyHijriDateLib::stHijriDate HDate = MyHijriDateLib::ConvertMiladiToHijri(MDate.Day, MDate.Month, MDate.Year);
+		cout << "\t | " << MyHijriDateLib::PrintHijriDate(HDate);
+	}
+	else
+	{
+		cout << MyDateLib::PrintDate(MyDateLib::GetSystemDate() , 1);
+	}
+
  }
  void Header(string Title)
 {
