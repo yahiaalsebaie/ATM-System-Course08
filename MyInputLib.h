@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "MyStringLib.h"
 #include <limits>
 
 using namespace std;
