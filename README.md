@@ -81,6 +81,7 @@ Bash
 ```
 g++ -std=c++17 "Course 08 Project 2 ATM System.cpp" -I . -o ATMSystem.exe
 ./ATMSystem.exe
+ATMSystem.exe
 ```
 ```
 
