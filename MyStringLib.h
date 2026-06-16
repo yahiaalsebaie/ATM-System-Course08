@@ -320,6 +320,8 @@ namespace MyStringLib
 				return S1.substr(0, i + 1); // اقطع من الصفر لحد المكان ده
 			}
 		}
+		return ""; // لو الجملة كلها مسافات
+
 	}
 	string Trim(string S1)
 	{
