@@ -71,9 +71,9 @@ This project strictly adheres to professional software engineering practices:
 ---
 ## 🔑 Built-in Testing Credentials:
 
-Username: A101
+**Account Number**: A101
 
-Password: 1111
+**PinCode**: 1111
 
 ---
 
