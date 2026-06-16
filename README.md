@@ -68,7 +68,14 @@ This project strictly adheres to professional software engineering practices:
     
 - **DRY Principle (Don't Repeat Yourself):** Reuses the absolute indexing routines across both calendar libraries for uniform calculation layouts.
 
-    
+---
+## 🔑 Built-in Testing Credentials:
+
+Username: A101
+
+Password: 1111
+
+---
 
 ## 💻 Compilation and Execution
 
