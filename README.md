@@ -68,7 +68,14 @@ This project strictly adheres to professional software engineering practices:
     
 - **DRY Principle (Don't Repeat Yourself):** Reuses the absolute indexing routines across both calendar libraries for uniform calculation layouts.
 
-    
+---
+## 🔑 Built-in Testing Credentials:
+
+**Account Number**: A101
+
+**PinCode**: 1111
+
+---
 
 ## 💻 Compilation and Execution
 
@@ -80,7 +87,6 @@ Bash
 
 ```
 g++ -std=c++17 "Course 08 Project 2 ATM System.cpp" -I . -o ATMSystem.exe
-./ATMSystem.exe
-```
+ATMSystem.exe
 ```
 
