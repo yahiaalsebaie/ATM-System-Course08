@@ -370,7 +370,8 @@ namespace MyStringLib
 
 	string ReverseWordsInString(string s1, string delim)
 	{
-		vector<string> vString = SplitString(s1, " ");
+		vector<string> vString = SplitString(s1, delim);
+		if (vString.empty()) return "";
 		string s2 = "";
 		for (short i = vString.size() - 1; i >= 0; i--)
 		{
@@ -380,17 +381,7 @@ namespace MyStringLib
 	}
 	string ReverseWordsInString(string s1)
 	{
-		vector<string> vString = SplitString(s1, " ");
-		vector<string>::iterator iter = vString.end();
-		string s2 = "";
-
-		while (iter != vString.begin())
-		{
-			--iter;
-			s2 += *iter + " ";
-		}
-		return (s2.substr(0, s2.length() - 1));
-
+		return ReverseWordsInString(s1, " ");
 	}
 	vector<string> ReverseWordsInVector(string s1, string delim = " ")
 	{
