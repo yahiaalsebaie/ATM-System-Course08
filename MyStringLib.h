@@ -94,7 +94,7 @@ namespace MyStringLib
 	}
 
 	//GetCapitalAndSmallLettersCount
-	pair<int, int> CountLetters(string s1)
+	pair<int, int> CountLetters(string& s1)
 	{
 		int Capital = 0, small = 0;
 		for (short i = 0; i < s1.length(); i++)
@@ -178,7 +178,7 @@ namespace MyStringLib
 		return count;
 	}
 
-	bool isVowel(char ch)
+	bool isVowel( char& ch)
 	{
 		ch = tolower(ch);
 
@@ -328,12 +328,12 @@ namespace MyStringLib
 		return (TrimLeft(TrimRight(S1)));
 	}
 
-	string TrimLeftUsingErase(string& s1)
+	static string TrimLeftUsingErase(string& s1)
 	{
 
 		for (short i = 0; i < s1.length(); i++)
 		{
-			if (s1[i] != ' ') return s1.erase(0, i);
+			if (s1[i] != ' ') return s1.erase(0, i); // تعديل مباشر في الذاكرة
 		}
 		// لو وصل هنا معناه إن الجملة كلها مسافات
 		return s1.erase(0, s1.length()); // عشان لو الجملة فراغات فقط ترجع صفر مسافات
@@ -342,14 +342,19 @@ namespace MyStringLib
 	{
 		for (short i = s1.length() - 1; i >= 0; i--)
 		{
-			if (s1[i] != ' ') return s1.erase(i + 1, s1.length());
+			if (s1[i] != ' ') return s1.erase(i + 1, s1.length()); // تعديل مباشر في الذاكرة
 		}
 		return s1.erase(0, s1.length()); // عشان لو الجملة فراغات فقط ترجع صفر مسافات
 	}
-	string TrimAllUsingErase(string& s1)
+	/*string TrimAllUsingErase(string& s1)
 	{
 		TrimLeftUsingErase(s1);
 		return TrimRightUsingErase(s1);
+	}*/
+	void TrimAllUsingErase(string& s1)
+	{
+		TrimLeftUsingErase(s1);
+		TrimRightUsingErase(s1);
 	}
 	string JoinString(const vector<string>& vString, string Delim)
 	{
