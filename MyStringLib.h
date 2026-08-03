@@ -242,7 +242,7 @@ namespace MyStringLib
 				cout << sWord << endl;
 			}
 			S1.erase(0, pos + delim.length()); /* erase() until
-			positon and move to next word. */
+			position and move to next word. */
 		}
 		if (S1 != "")
 		{

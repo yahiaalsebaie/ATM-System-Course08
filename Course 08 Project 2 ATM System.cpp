@@ -43,7 +43,7 @@ void ShowDate(bool FullDate = true)
 {
 	 system("cls");
 	 short Choice;
-	 ShowDate();
+	 //ShowDate();
 	 Header("Quick Withdraw");
 	 cout << "\t[1] 20.\t";
 	 cout << "\t[2] 50.\n";
