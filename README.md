@@ -90,3 +90,113 @@ g++ -std=c++17 "Course 08 Project 2 ATM System.cpp" -I . -o ATMSystem.exe
 ATMSystem.exe
 ```
 
+
+---
+## 💻 Related Projects
+
+If you'd like to explore more of my C++ journey and see how I build data structures, algorithms, and complete applications from scratch, check out these repositories.
+
+---
+
+### 📚 C++ Data Data Structures & Algorithms From Scratch
+
+A collection of advanced Data Structures and Algorithms implemented completely from scratch in C++.
+
+This repository contains:
+
+- Custom implementations of Linked List, Stack, Queue, Dynamic Array, String, and more.
+- Every data structure includes a dedicated **test file (.cpp)** with practical examples.
+- Multiple implementations of the same project to compare different approaches (Custom Data Structures vs STL).
+- Solutions and projects from **Programming Advices – Algorithms & Problem Solving Level 5** course.
+
+Most of these classes are extensions of the libraries available in **MyCppToolboxLibraries**.
+
+https://github.com/yahiaalsebaie/CppDataStructuresFromScratch
+
+---
+
+### 🔧 MyCppToolboxLibraries
+
+My personal C++ library built completely from scratch.
+
+It contains reusable utility classes that I developed throughout my programming journey, including:
+
+- Date & Time
+- String
+- Input Validation
+- Utility Functions
+- Period
+- And many more...
+
+Many of the projects below are built on top of these libraries.
+
+https://github.com/yahiaalsebaie/MyCppToolboxLibraries
+
+---
+
+### 🏦 Bank System (OOP)
+
+Object-Oriented implementation of a complete banking system.
+
+Includes the Currency Exchange project.
+
+https://github.com/yahiaalsebaie/Bank-System-OOP
+
+---
+
+### 🏦 Bank Management System (Procedural Programming)
+
+The same banking system implemented using Procedural Programming.
+
+https://github.com/yahiaalsebaie/Bank-Management-System-Cpp
+
+---
+
+### 🏧 ATM System
+
+Complete ATM simulation.
+
+https://github.com/yahiaalsebaie/ATM-System-Course08
+
+---
+
+### 📅 Dual Calendar System
+
+Gregorian & Hijri Calendar Library.
+
+Features:
+
+- Date calculations
+- Date arithmetic
+- Historical dates
+- Astronomical calculations
+- Date differences
+
+https://github.com/yahiaalsebaie/Dual-Calendar-System-MiladiAndHijiri
+
+---
+
+### 🎮 Math Game
+
+Console Math Game.
+
+https://github.com/yahiaalsebaie/cpp-Math-Game
+
+---
+
+### ✂️ Stone Paper Scissors Game
+
+Console implementation of the classic game.
+
+https://github.com/yahiaalsebaie/stone-paper-scissors-cpp-game
+
+---
+
+# ⭐ If you find this repository useful...
+
+Please consider giving it a ⭐.
+
+It helps others discover the project and motivates me to continue improving it.
+
+---
+
